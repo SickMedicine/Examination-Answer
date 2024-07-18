@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Green API</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            background-color: #f4f4f4;
+            height: 100vh;
+        }
+        .container {
+            display: flex;
+            width: 80%;
+            max-width: 1200px;
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 50px;
+        }
+        .left-panel, .right-panel {
+            width: 50%;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        label, input {
+            display: block;
+            margin-bottom: 10px;
+            width: 100%;
+            height: 30px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        textarea {
+            width: 100%;
+            height: 600px;
+            margin-top: 20px;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        #connection-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left-panel">
+            <h1>Green API Methods</h1>
+            <form id="connection-form">
+                <input type="text" placeholder="idInstance" id="idInstance" name="idInstance" required>
+                <input type="text" placeholder="ApiTokenInstance" id="ApiTokenInstance" name="ApiTokenInstance" required>
+                <button type="button" onclick="invokeMethod('getSettings')">getSettings</button>
+                <button type="button" onclick="invokeMethod('getStateInstance')">getStateInstance</button>
+                <input type="text" placeholder="Phone Number" id="phoneNumber" name="phoneNumber" required>
+                <input type="text" placeholder="Message"  id="message" name="message">
+                <button type="button" onclick="invokeMethod('sendMessage')">sendMessage</button>
+                <input type="text" placeholder="File URL:"  id="urlFile" name="urlFile">
+                <input type="text" placeholder="File Name:"  id="fileName" name="fileName">
+                <input type="text" placeholder="Caption:"  id="caption" name="caption">
+                <button type="button" onclick="invokeMethod('sendFileByUrl')">sendFileByUrl</button>
+            </form>
+        </div>
+        <div class="right-panel">
+            <h2>Response</h2>
+            <textarea id="response" readonly></textarea>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
